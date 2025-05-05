@@ -42,6 +42,13 @@ interface AlistService {
         @Body request: Map<String, String>,
         @Header("Authorization") token: String
     ): AlistResponse<FileData>
+
+    // 添加匿名访问的API方法
+    @POST("api/fs/list")
+    suspend fun listFilesAnonymous(@Body request: Map<String, String>): AlistResponse<FileListData>
+
+    @POST("api/fs/get")
+    suspend fun getFileInfoAnonymous(@Body request: Map<String, String>): AlistResponse<FileData>
 }
 
 data class AlistResponse<T>(
